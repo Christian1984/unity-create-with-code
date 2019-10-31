@@ -40,3 +40,17 @@ This repository is a collection of tutorials from https://learn.unity.com/course
 - Multiply (*) operator
 - Components
 - Collider and RigidBody
+
+## Lession 1.3 - High Speed Chase
+
+- Not sure if this tutorial is right for me; going very slow, looking forward to the more unity-specific stuff...
+- Helpful trick is to set the Playmode Tint Color (under Edit > Preferences) to a more distinct color (like #9DC2EF with alpha = 150) to get right away whether you are in edit or play mode.
+
+### New Functionality
+- Camera follows the vehicle down the road at a set offset distance
+
+### New Concepts & Skills
+- Variables 
+- Data types 
+- Access Modifiers
+- Declare and initialize variables
