@@ -54,3 +54,19 @@ This repository is a collection of tutorials from https://learn.unity.com/course
 - Data types 
 - Access Modifiers
 - Declare and initialize variables
+
+## Lesson 1.4 - Step into the Driver's Seat
+
+Modified some of the stuff that was tought here, e.g. 
+- use local variables instead of members for the inputs, as that makes more sense
+- multiply roration by vInput to allow the car to only turn when it's moving. (that also fixes the behaviour when backing up!)
+- left some stuff public/Serialized so that it can be changed from inside the editor...
+
+### New Functionality
+- When the player presses the up/down arrows, the vehicle will move forward and backward
+- When the player presses the left/right arrows, the vehicle turns 
+
+### New Concepts & Skills
+- Empty objects 
+- Get user input
+- Translate vs Rotate
