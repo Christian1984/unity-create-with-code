@@ -70,3 +70,7 @@ Modified some of the stuff that was tought here, e.g.
 - Empty objects 
 - Get user input
 - Translate vs Rotate
+
+## Lesson 1 Challenge - Plane Programming
+
+Fun challenge, quite simple... Well, aimed at beginners. But still a nice refresher :-)
