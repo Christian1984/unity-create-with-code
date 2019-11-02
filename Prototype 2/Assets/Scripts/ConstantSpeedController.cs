@@ -6,12 +6,6 @@ public class ConstantSpeedController : MonoBehaviour
 {
     [SerializeField] private Vector3 speed;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
