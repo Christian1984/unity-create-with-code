@@ -1,6 +1,6 @@
 This repository is a collection of tutorials from https://learn.unity.com/course/create-with-code
 
-# Lesson 1
+# Unit 1 - Player Control
 
 ## Lession 1.1 - Start your 3D Engines
 
@@ -74,3 +74,8 @@ Modified some of the stuff that was tought here, e.g.
 ## Lesson 1 Challenge - Plane Programming
 
 Fun challenge, quite simple... Well, aimed at beginners. But still a nice refresher :-)
+
+
+# Unit 2 - Basic Gameplay
+
+## Lesson 2.1 - Player Positioning
