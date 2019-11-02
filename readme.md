@@ -79,3 +79,20 @@ Fun challenge, quite simple... Well, aimed at beginners. But still a nice refres
 # Unit 2 - Basic Gameplay
 
 ## Lesson 2.1 - Player Positioning
+
+Nice little excercise. Gets one comfy with setting up a new project, importing assets etc.
+
+If Visual Studio Code Autocomplete does not work:
+- make sure you have dotnet sdk installed
+- make sure you have the C#-vscode-extension installed
+- make sure you have the correct project select (bottom right in status bar)
+- restart vscode
+
+### New Functionality
+- The player can move left and right based on the user’s left and right key presses
+- The player will not be able to leave the play area on either side
+
+### New Concepts & Skills
+- Adjust object scale
+- If-statements
+- Greater/Less than operators
