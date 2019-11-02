@@ -113,3 +113,22 @@ If Visual Studio Code Autocomplete does not work:
 - Instantiate objects
 - Destroy objects 
 - Else-if statements
+
+## Lesson 2.3 - Random Animal Stampede
+
+Random.Range has overloaded methodes:
+- int Random.Range(int min, int max) for min (inclusive) and max (EXclusive) and
+- float Random.Range(float min, float max) for min (inclusive) and max (INclusive)
+
+### New Functionality
+- The player can press the S to spawn an animal
+- Animal selection and spawn location are randomized
+- Camera projection (perspective/orthographic) selected
+
+### New Concepts & Skills
+- Spawn Manager
+- Arrays
+- Keycodes
+- Random generation
+- Local vs Global variables
+- Perspective vs Isometric projections
