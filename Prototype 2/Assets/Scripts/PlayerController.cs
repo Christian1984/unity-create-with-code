@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float boundsX;
 
+    [SerializeField] private GameObject foodPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float hInput = Input.GetAxis("Horizontal");
+        //float foodInput = Input.GetKeyDown
+
+        // move player
         transform.Translate(Vector3.right * speed * Time.deltaTime * hInput);
 
         if (transform.position.x < -boundsX) {
@@ -24,6 +29,12 @@ public class PlayerController : MonoBehaviour
         }
         else if (transform.position.x > boundsX) {
             transform.position = new Vector3(boundsX, transform.position.y, transform.position.z);
+        }
+
+        // spawn food
+        if (Input.GetKeyDown(KeyCode.Space) && foodPrefab != null) {
+            //Instantiate(foodPrefab, transform.position, Quaternion.identity); //this will always spawn the object with the rotation set to (0, 0, 0)
+            Instantiate(foodPrefab, transform.position, foodPrefab.transform.rotation); //this will always spawn the object with the rotation as set up in the prefab!
         }
     }
 }

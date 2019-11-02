@@ -96,3 +96,20 @@ If Visual Studio Code Autocomplete does not work:
 - Adjust object scale
 - If-statements
 - Greater/Less than operators
+
+## Lesson 2.2 - Food Flight
+
+- Overrides: If you update an instance of a prefab and want to see the diff between the two, and/or update the prefab/revert the instance to the prefab's state, click override on the top right of the inspector!
+- Make sure to use the right reference space (Space.Local vs. Space.World when moving and rotating objects at the same time!)
+
+### New Functionality
+- The player can press the Spacebar to launch a projectile prefab,
+- Projectile and Animals are removed from the scene if they leave the screen
+
+### New Concepts & Skills
+- Create Prefabs
+- Override Prefabs
+- Test for Key presses
+- Instantiate objects
+- Destroy objects 
+- Else-if statements
