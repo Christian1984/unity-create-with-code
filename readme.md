@@ -177,3 +177,27 @@ I think I'll also change how the velocity system works in a similar way...
 - Multiply/Assign (“*) Operator
 - And (&&) Operator
 - OnCollisionEnter()
+
+## Lesson 3.2 - Make the World Whiz By
+
+Instead of adding an additional box collider to the background, one can use `repeatWidth = GetComponent<SpriteRenderer>().bounds.size.x / 2;` to achieve the same result!
+
+- Refresher on tags which was helpful!
+- Cross-Script-Communication was really helpful; though I'm not sure if I wouldn't want to use references instead of tags and GameObject.Find(string)!? Guess both have their place!
+- I decided to do some things slightly different, e.g. how and when Obstacles are destroyed: I decided to use a separate script here and use the y coordinate (i.e. as soon as the obstacle starts falling it gets destroyed).
+
+### New Functionality
+- Background repeats seamlessly
+- Background stops when player collides with obstacle
+- Obstacle spawning stops when player collides with obstacle
+- Obstacles are destroyed off-screen
+
+### New Concepts and Skills:
+- Repeat background
+- Get Collider width
+- Script communication
+- Equal to (==) operator
+- Tags
+- CompareTag()
+
+## Lesson 3.3 - Don't Just Stand There

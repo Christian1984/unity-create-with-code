@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class MoveLeftController : MonoBehaviour
 {
-    [SerializeField] private float speed = 10;
+    [SerializeField] private PlayerController playerController;
+
+    void Start()
+    {
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        if (playerController && !playerController.isGameOver)
+        {
+            transform.Translate(Vector3.left * playerController.getSpeed() * Time.deltaTime);
+        }
     }
 }

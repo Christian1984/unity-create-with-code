@@ -9,16 +9,19 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float spawnDelayMin = 0;
     [SerializeField] private float spawnDelayMax = 0;
 
+    private PlayerController playerController;
+
     void Start()
     {
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         SpawnObstacle();
     }
 
     void SpawnObstacle() {
-        if (obstaclePrefab) {
+        if (obstaclePrefab && playerController && !playerController.isGameOver)
+        {
             Instantiate(obstaclePrefab, spawnPosition, obstaclePrefab.transform.rotation);
+            Invoke("SpawnObstacle", Random.Range(spawnDelayMin, spawnDelayMax));
         }
-        
-        Invoke("SpawnObstacle", Random.Range(spawnDelayMin, spawnDelayMax));
     }
 }

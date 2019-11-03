@@ -9,13 +9,16 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static float gravityModifier { get { return instance._gravityModifier; }}
 
-    void Awake() {
-        if (!instance) {
+    void Awake() 
+    {
+        if (!instance) 
+        {
             instance = this;
         }
     }
 
-    void Update() {
+    void Update() 
+    {
         Physics.gravity = Vector3.down * instance._gravityModifier * 10;
     }
 }
