@@ -148,3 +148,32 @@ Working with colliders was a nice refresher!
 - Colliders and Triggers 
 - Override functions
 - Log Debug messages to console
+
+### Lesson 3 - Run and Jump
+
+## Lesson 3.1 - Jump Force
+
+One thing I didn't know was that Unity has several ForceModes (e.g. for use with Rigidbody.AddForce()) for different use cases (https://docs.unity3d.com/ScriptReference/ForceMode.html)!
+
+I really don't like changing global properties from non-static GameObjects... This feels ugly and in my opinion can lead to unexpected side effects (imagine multiple instances of player with different settings for this property!)
+
+Therefore I decided to move this piece of code to a GameManager-GameObject and make it a singleton as described here -> https://answers.unity.com/questions/576969/create-a-persistent-gameobject-using-singleton.html
+
+I think I'll also change how the velocity system works in a similar way...
+
+### New Functionality
+- Player jumps on spacebar press
+- Player cannot double-jump
+- Obstacles and Background move left
+- Obstacles spawn on intervals
+
+### Key Concepts and Skills
+- GetComponent
+- ForceMode.Impulse
+- Physics.Gravity
+- Rigidbody constraints
+- Rigidbody variables
+- Booleans
+- Multiply/Assign (“*) Operator
+- And (&&) Operator
+- OnCollisionEnter()
