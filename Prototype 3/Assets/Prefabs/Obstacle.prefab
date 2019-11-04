@@ -139,8 +139,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.55419445, y: 1.9485743, z: 3.18532}
-  m_Center: {x: 0.03493738, y: 0.9665843, z: 0.00000047683716}
+  m_Size: {x: 0.63741684, y: 1.9485743, z: 3.18532}
+  m_Center: {x: -0.006673813, y: 0.9665843, z: 0.00000047683716}
 --- !u!114 &7352750183252884542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163cd07a0fa300d47a3a553f5f901133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
 --- !u!114 &114635805800755068
 MonoBehaviour:
   m_ObjectHideFlags: 0

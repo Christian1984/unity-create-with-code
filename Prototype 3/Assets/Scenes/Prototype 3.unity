@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gravityModifier: 7.5
+  _speedIncreaseInterval: 2
+  _speedIncreaseAmount: 1
 --- !u!4 &321478421
 Transform:
   m_ObjectHideFlags: 0
@@ -273,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 30
-  speed: 25
+  speed: 15
   forceMode: 1
 --- !u!1 &499896465
 GameObject:
@@ -498,7 +500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163cd07a0fa300d47a3a553f5f901133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
 --- !u!114 &835818923
 MonoBehaviour:
   m_ObjectHideFlags: 0

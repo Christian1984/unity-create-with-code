@@ -41,12 +41,16 @@ public class PlayerController : MonoBehaviour
         {
             if (!isGameOver)
             {
-                anim.SetBool("Death_b", true);
+                if(anim)
+                {
+                    anim.SetBool("Death_b", true);
+                }
 
                 // apply force to obstacle so that it falls over
                 Rigidbody collisionRb = collision.gameObject.GetComponent<Rigidbody>();
                 if (collisionRb)
                 {
+                    Debug.Log("Baaam! " + collision.gameObject.name);
                     collisionRb.AddForce(Vector3.right, forceMode);
                 }
 
@@ -55,8 +59,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public float getSpeed() 
+    public float GetSpeed() 
     {
         return speed;
+    }
+
+    public void IncreaseSpeed(float amount)
+    {
+        if (!isGameOver)
+        {
+            speed += amount;
+            Debug.Log("New Speed: " + speed);
+
+            if (anim)
+            {
+                anim.SetFloat("RunSpeedAnimFactor_f", speed / 10f);
+            }
+        }
     }
 }
