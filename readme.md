@@ -230,3 +230,5 @@ Working with AudioClips and AudioSource, especially AudioSource.PlayOneShot() wa
 - Child object positioning
 - Audio clips and Audio sources 
 - Play and stop sound effects
+
+## Challenge 3 - Balloons, Bombs and Booleans
