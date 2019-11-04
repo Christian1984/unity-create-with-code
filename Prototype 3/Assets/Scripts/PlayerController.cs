@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private Animator anim;
-    private AudioSource audio;
+    private AudioSource audioSource;
 
     private bool isOnGround = false;
     public bool isGameOver { get; private set; } = false;
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -53,10 +54,10 @@ public class PlayerController : MonoBehaviour
                 fxDirtSplatter.Stop();
             }
 
-            // play crash sound
-            if (audio && soundJump)
+            // play jump sound
+            if (audioSource && soundJump)
             {
-                audio.PlayOneShot(soundJump, 0.75f);
+                audioSource.PlayOneShot(soundJump, 0.75f);
             }
         }
     }
@@ -95,9 +96,9 @@ public class PlayerController : MonoBehaviour
             }
 
             // play crash sound
-            if (audio && soundCrash)
+            if (audioSource && soundCrash)
             {
-                audio.PlayOneShot(soundCrash, 1.0f);
+                audioSource.PlayOneShot(soundCrash, 1.0f);
             }
 
             // apply force to obstacle so that it falls over
@@ -106,6 +107,9 @@ public class PlayerController : MonoBehaviour
             {
                 collisionRb.AddForce(Vector3.right, forceMode);
             }
+
+            // restart level
+            Invoke("RestartLevel", 3);
 
             isGameOver = true;
         }
@@ -127,5 +131,11 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetFloat("RunSpeedAnimFactor_f", speed / 10f);
         }
+    }
+
+    private void RestartLevel()
+    {
+        Debug.Log("Restart!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
