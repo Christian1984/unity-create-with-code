@@ -215,3 +215,18 @@ Playing around with the Animator and the Animator's State Machine was helpful!
 - Animation programming
 - SetTrigger(), SetBool(), SetInt()
 - Not (!) operator
+
+## Lesson 3.4 - Particles and Sound Effects
+
+Working with AudioClips and AudioSource, especially AudioSource.PlayOneShot() was helpful!
+
+### New Functionality:
+- Music plays during the game
+- Particle effects at the player’s feet when they run
+- Sound effects and explosion when the player hits an obstacle
+
+### New Concepts and Skills:
+- Particle systems 
+- Child object positioning
+- Audio clips and Audio sources 
+- Play and stop sound effects
