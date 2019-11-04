@@ -310,7 +310,7 @@ MonoBehaviour:
     type: 3}
   spawnPosition: {x: 30, y: 0, z: 0}
   spawnDelayMin: 0.75
-  spawnDelayMax: 1.5
+  spawnDelayMax: 2.5
 --- !u!4 &499896467
 Transform:
   m_ObjectHideFlags: 0
