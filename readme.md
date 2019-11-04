@@ -201,3 +201,17 @@ Instead of adding an additional box collider to the background, one can use `rep
 - CompareTag()
 
 ## Lesson 3.3 - Don't Just Stand There
+
+Playing around with the Animator and the Animator's State Machine was helpful!
+
+### New Functionality:
+- The player starts the scene with a fast-paced running animation
+- When the player jumps, there is a jumping animation
+- When the player crashes, the player falls over
+### New Concepts and Skills:
+- Animation Controllers
+- Animation States, Layers, and Transitions
+- Animation parameters
+- Animation programming
+- SetTrigger(), SetBool(), SetInt()
+- Not (!) operator

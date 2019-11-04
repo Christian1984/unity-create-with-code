@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveLeftController : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerController;
+    private PlayerController playerController;
 
     void Start()
     {
