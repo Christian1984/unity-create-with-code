@@ -149,7 +149,7 @@ Working with colliders was a nice refresher!
 - Override functions
 - Log Debug messages to console
 
-### Lesson 3 - Run and Jump
+### Unit 3 - Run and Jump
 
 ## Lesson 3.1 - Jump Force
 
@@ -230,3 +230,7 @@ Working with AudioClips and AudioSource, especially AudioSource.PlayOneShot() wa
 - Child object positioning
 - Audio clips and Audio sources 
 - Play and stop sound effects
+
+# Unit 4 - Gameplay Mechanics
+
+## Lession 4.1 Watch Where You're Going
