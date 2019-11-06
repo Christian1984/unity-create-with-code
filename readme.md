@@ -30,7 +30,7 @@ This repository is a collection of tutorials from https://learn.unity.com/course
 - Vehicle moves down the road at a constant speed
 - When the vehicle collides with obstacles, they fly into the air
 
-# New Concepts & Skills
+### New Concepts & Skills
 - C# Scripts
 - Start vs Update
 - Comments
@@ -234,3 +234,15 @@ Working with AudioClips and AudioSource, especially AudioSource.PlayOneShot() wa
 # Unit 4 - Gameplay Mechanics
 
 ## Lession 4.1 Watch Where You're Going
+
+Added a mouse controller! :-) Works like a charm!
+
+### New Functionality:
+- Camera rotates around the island based on horizontal input
+- Player rolls in direction of camera based on vertical input
+
+### New Concepts and Skills:
+- Texture Wraps
+- Camera as child object
+- Global vs Local coordinates
+- Get direction of other object
