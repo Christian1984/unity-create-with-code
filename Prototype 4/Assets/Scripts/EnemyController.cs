@@ -2,24 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float velocity = 0;
-    [SerializeField] private GameObject focalPoint = null;
+    
+    private Rigidbody rb = null;
+    private GameObject player = null;
 
-    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        player = GameObject.Find("Player");
     }
 
     // Fixed Update is called in fixed intervals (do physics manipulation here!)
     void FixedUpdate()
     {
-        if (focalPoint)
+        if (rb && player)
         {
-            rb.AddForce(focalPoint.transform.forward * velocity * Time.deltaTime);
+            rb.AddForce((player.transform.position - transform.position).normalized * velocity * Time.deltaTime);
         }
     }
 }

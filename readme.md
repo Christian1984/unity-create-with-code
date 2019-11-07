@@ -149,6 +149,7 @@ Working with colliders was a nice refresher!
 - Override functions
 - Log Debug messages to console
 
+
 ### Unit 3 - Run and Jump
 
 ## Lesson 3.1 - Jump Force
@@ -231,6 +232,7 @@ Working with AudioClips and AudioSource, especially AudioSource.PlayOneShot() wa
 - Audio clips and Audio sources 
 - Play and stop sound effects
 
+
 # Unit 4 - Gameplay Mechanics
 
 ## Lession 4.1 Watch Where You're Going
@@ -246,3 +248,19 @@ Added a mouse controller! :-) Works like a charm!
 - Camera as child object
 - Global vs Local coordinates
 - Get direction of other object
+
+## Lesson 4.2 - Follow the Player
+
+- Moved Rigidbody.AddForce()-calls to FixedUpdate for proper physics handling.
+- Implemented the SpawnManager using a circular spawn area and a minimum distance to player.
+
+### New Functionality:
+- Enemy spawns at random location on the island
+- Enemy follows the player around 
+- Spheres bounce off of each other 
+
+### New Concepts and Skills:
+- Physics Materials
+- Defining vectors in 3D space
+- Normalizing values
+- Methods with return values
