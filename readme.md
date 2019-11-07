@@ -279,4 +279,18 @@ Added a mouse controller! :-) Works like a charm!
 - Local component variables 
 - IEnumerators and WaitForSeconds()
 - Coroutines
-- SetActive(true/false) 
+- SetActive(true/false)
+
+## Lesson 4.4 - For-Loops For Waves
+
+- Use `GameObject.FindGameObjectsWithTag("Enemy").Length` or `GameObject.FindObjectsOfType<EnemyController>().Length` to determine the number of enemies alive
+
+### New Functionality:
+- Enemies spawn in waves
+- The number of enemies spawned increases after every wave is defeated
+- A new power up spawns with every wave
+### New Concepts and Skills:
+- For-loops
+- Increment (++) operator
+- Custom methods with parameters
+- FindObjectsOfType
