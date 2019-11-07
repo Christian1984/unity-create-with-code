@@ -264,3 +264,19 @@ Added a mouse controller! :-) Works like a charm!
 - Defining vectors in 3D space
 - Normalizing values
 - Methods with return values
+
+## Lesson 4.3 - PowerUp and CountDown
+
+- Coroutines are pretty cool, as they "are excellent when modeling behavior over several frames." (https://docs.unity3d.com/ScriptReference/MonoBehaviour.StartCoroutine.html)
+
+### New Functionality:
+- When the player collects a powerup, a visual indicator appears
+- When the player collides with an enemy while they have the powerup, the enemy goes flying
+- After a certain amount of time, the powerup ability and indicator disappear
+
+### New Concepts and Skills:
+- Debug concatenation
+- Local component variables 
+- IEnumerators and WaitForSeconds()
+- Coroutines
+- SetActive(true/false) 
