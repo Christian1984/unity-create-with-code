@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 85901905}
   - component: {fileID: 85901904}
   - component: {fileID: 85901908}
+  - component: {fileID: 85901909}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -221,6 +222,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &85901909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85901903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba16da8158a4614783db036cf852bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 10
+  cadence: 10
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +511,7 @@ GameObject:
   - component: {fileID: 657540582}
   m_Layer: 0
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
