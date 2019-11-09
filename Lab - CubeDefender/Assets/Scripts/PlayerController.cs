@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameObject head;
+    [SerializeField] private GameObject head = null;
     [SerializeField] private float maxVelocity = 0;
     [SerializeField] private float jumpForce = 0;
     [SerializeField] private float mouseSensitivity = 0;
 
-    private Rigidbody rb;
+    [SerializeField] private GameObject projectile = null;
+
+    private Rigidbody rb = null;
+    private Camera cam = null;
     private bool canMove = true;
     private bool canJump = true;
 
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cam = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
@@ -35,6 +39,7 @@ public class PlayerController : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         bool jump = Input.GetButtonDown("Jump");
+        bool fire = Input.GetButtonDown("Fire1");
 
         // horizontal movement
         Vector2 hInput = (new Vector2(transform.forward.x, transform.forward.z) * zInput +
@@ -57,6 +62,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             canJump = false;
+        }
+
+        // fire
+        if (fire && projectile && cam)
+        {
+            Instantiate(projectile, cam.transform.position + cam.transform.forward, cam.transform.rotation)
+                .transform.Rotate(projectile.transform.rotation.eulerAngles);
         }
     }
 
