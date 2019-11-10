@@ -19,7 +19,7 @@ public class ZombieController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 hVelocity = new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z).normalized * speed * Time.deltaTime;
+        Vector3 hVelocity = new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z).normalized * speed;
         rb.velocity = hVelocity + rb.velocity.y * Vector3.up;
     }
 }

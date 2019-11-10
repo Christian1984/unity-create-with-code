@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         // horizontal movement
         Vector2 hInput = (new Vector2(transform.forward.x, transform.forward.z) * zInput +
             new Vector2(transform.right.x, transform.right.z) * xInput);
-        Vector2 hVelocity = (hInput.magnitude > 1 ? hInput.normalized : hInput) * maxVelocity * Time.deltaTime;
+        Vector2 hVelocity = (hInput.magnitude > 1 ? hInput.normalized : hInput) * maxVelocity;
 
         rb.velocity = new Vector3(hVelocity.x, rb.velocity.y, hVelocity.y);
 

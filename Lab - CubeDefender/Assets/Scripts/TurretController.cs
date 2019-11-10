@@ -20,6 +20,7 @@ public class TurretController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // TODO: this is somewhat ugly and buggy. fix!
         if (!currentTarget)
         {
             GameObject closest = GetClosestEnemy();
