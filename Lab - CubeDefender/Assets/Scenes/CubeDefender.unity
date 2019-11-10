@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 85901904}
   - component: {fileID: 85901908}
   - component: {fileID: 85901909}
+  - component: {fileID: 85901910}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -231,11 +232,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 85901903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aba16da8158a4614783db036cf852bfe, type: 3}
+  m_Script: {fileID: 11500000, guid: 8814cd5df57a54c49a4714b2ee5178fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 717820824467289076, guid: 0f9c2c6b16d393842a21e7f2fe778312,
+    type: 3}
   range: 10
-  cadence: 10
+--- !u!114 &85901910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85901903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4882774ebaa61142a8ca6976ef37d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.5
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,6 +1090,7 @@ GameObject:
   - component: {fileID: 1976444925}
   - component: {fileID: 1976444926}
   - component: {fileID: 1976444927}
+  - component: {fileID: 1976444928}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1187,7 +1203,7 @@ MonoBehaviour:
   head: {fileID: 1481669617}
   maxVelocity: 1000
   jumpForce: 750
-  mouseSensitivity: 300
+  mouseSensitivity: 600
   projectile: {fileID: 717820824467289076, guid: 0f9c2c6b16d393842a21e7f2fe778312,
     type: 3}
 --- !u!114 &1976444927
@@ -1203,6 +1219,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &1976444928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976444920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4882774ebaa61142a8ca6976ef37d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.5
 --- !u!1 &2078440875
 GameObject:
   m_ObjectHideFlags: 0

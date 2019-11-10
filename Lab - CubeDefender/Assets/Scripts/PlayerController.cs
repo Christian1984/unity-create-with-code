@@ -11,14 +11,17 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject projectile = null;
 
+    private ProjectileEmitter gun = null;
     private Rigidbody rb = null;
     private Camera cam = null;
+
     private bool canMove = true;
     private bool canJump = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        gun = GetComponent<ProjectileEmitter>();
         rb = GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
     }
@@ -65,10 +68,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // fire
-        if (fire && projectile && cam)
+        if (fire && projectile && cam && gun)
         {
-            Instantiate(projectile, cam.transform.position + cam.transform.forward, cam.transform.rotation)
-                .transform.Rotate(projectile.transform.rotation.eulerAngles);
+            gun.PullTrigger(projectile, cam.transform.position + cam.transform.forward, cam.transform.rotation);
         }
     }
 
