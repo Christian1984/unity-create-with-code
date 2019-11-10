@@ -33,8 +33,26 @@ public class TurretController : MonoBehaviour
 
     private GameObject GetClosestEnemy()
     {
-        //TODO
-        return GameObject.FindGameObjectWithTag("Enemy");
+        // TODO: performing this calculation every frame is quite expensive.
+        // ideas: lock on to one enemy until it gets out of range or destroyed, then find next
+        // or: use a "range-trigger"-collider and only watch enemies inside
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        GameObject closest = null;
+        float minSqDist = Mathf.Infinity;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float sqDist = Vector3.SqrMagnitude(enemy.transform.position - transform.position);
+
+            if (sqDist < minSqDist)
+            {
+                closest = enemy;
+                minSqDist = sqDist;
+            }
+        }
+
+        return closest;
     }
 
     private void AttackTarget(GameObject target)
