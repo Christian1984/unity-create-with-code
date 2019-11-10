@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class TurretController : MonoBehaviour
 {
-    [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject projectile = null;
     [SerializeField] private float range = 0;
 
     private ProjectileEmitter gun = null;
+
+    private GameObject currentTarget = null;
 
     // Start is called before the first frame update
     void Start()
@@ -18,24 +20,37 @@ public class TurretController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject closest = GetClosestEnemy();
-
-        if (closest)
+        if (!currentTarget)
         {
-            Debug.DrawLine(transform.position, closest.transform.position, Color.white);
+            GameObject closest = GetClosestEnemy();
 
-            if (closest && Vector3.Distance(closest.transform.position, transform.position) <= range)
+            if (closest)
             {
-                AttackTarget(closest);
+                Debug.DrawLine(transform.position, closest.transform.position, Color.white);
+
+                if (closest && Vector3.Distance(closest.transform.position, transform.position) <= range)
+                {
+                    LockOnTarget(closest);
+                }
+                else
+                {
+                    currentTarget = null;
+                }
             }
         }
+        else
+        {
+            if (Vector3.Distance(currentTarget.transform.position, transform.position) > range)
+            {
+                currentTarget = null;
+            }
+        }
+
+        AttackTarget();
     }
 
     private GameObject GetClosestEnemy()
     {
-        // TODO: performing this calculation every frame is quite expensive.
-        // ideas: lock on to one enemy until it gets out of range or destroyed, then find next
-        // or: use a "range-trigger"-collider and only watch enemies inside
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         GameObject closest = null;
@@ -55,16 +70,24 @@ public class TurretController : MonoBehaviour
         return closest;
     }
 
-    private void AttackTarget(GameObject target)
+    private void LockOnTarget(GameObject newTarget)
     {
-        Debug.DrawLine(transform.position, target.transform.position, Color.red);
+        currentTarget = newTarget;
+    }
 
-        if (gun)
+    private void AttackTarget()
+    {
+        if (currentTarget)
         {
-            Vector3 gunPos = transform.position + transform.up;
-            Vector3 dir = (target.transform.position - gunPos).normalized;
+            Debug.DrawLine(transform.position, currentTarget.transform.position, Color.red);
 
-            gun.PullTrigger(projectile, gunPos + dir, Quaternion.LookRotation(dir));
+            if (gun)
+            {
+                Vector3 gunPos = transform.position + transform.up;
+                Vector3 dir = (currentTarget.transform.position - gunPos).normalized;
+
+                gun.PullTrigger(projectile, gunPos + dir, Quaternion.LookRotation(dir));
+            }
         }
     }
 }
