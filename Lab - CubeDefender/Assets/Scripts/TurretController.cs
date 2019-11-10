@@ -20,11 +20,14 @@ public class TurretController : MonoBehaviour
     {
         GameObject closest = GetClosestEnemy();
 
-        Debug.DrawLine(transform.position, closest.transform.position, Color.white);
-
-        if (closest && Vector3.Distance(closest.transform.position, transform.position) <= range)
+        if (closest)
         {
-            AttackTarget(closest);
+            Debug.DrawLine(transform.position, closest.transform.position, Color.white);
+
+            if (closest && Vector3.Distance(closest.transform.position, transform.position) <= range)
+            {
+                AttackTarget(closest);
+            }
         }
     }
 
