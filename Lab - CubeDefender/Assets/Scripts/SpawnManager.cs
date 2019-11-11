@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnController : MonoBehaviour
+public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab = null;
     [SerializeField] private int daySeconds = 0;
 
     private int currentSecond = 0;
@@ -34,15 +33,15 @@ public class SpawnController : MonoBehaviour
     private void SpawnWave() 
     {
         wave++;
+        
+        ZombieSpawner[] zombieSpawners = GameObject.FindObjectsOfType<ZombieSpawner>();
 
-        if (enemyPrefab)
+        if (zombieSpawners.Length <= 0) return;
+
+        for (int i = 0; i < wave; i++)
         {
-            for (int i = 0; i < wave; i++)
-            {
-                //TODO: randomize spawn pos
-                Vector3 pos = new Vector3(2 * i, 0, 10);
-                Instantiate(enemyPrefab, pos, enemyPrefab.transform.rotation);
-            }
+            int idx = Random.Range(0, zombieSpawners.Length);
+            zombieSpawners[idx].Spawn();
         }
     }
 }
