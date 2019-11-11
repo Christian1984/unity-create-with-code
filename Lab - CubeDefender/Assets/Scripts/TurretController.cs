@@ -27,7 +27,7 @@ public class TurretController : MonoBehaviour
 
             if (closest)
             {
-                Debug.DrawLine(transform.position, closest.transform.position, Color.white);
+                Debug.DrawLine(transform.position + 2 * transform.up, closest.transform.position, Color.white);
 
                 if (closest && Vector3.Distance(closest.transform.position, transform.position) <= range)
                 {
@@ -80,11 +80,11 @@ public class TurretController : MonoBehaviour
     {
         if (currentTarget)
         {
-            Debug.DrawLine(transform.position, currentTarget.transform.position, Color.red);
+            Debug.DrawLine(transform.position + 2 * transform.up, currentTarget.transform.position, Color.red);
 
             if (gun)
             {
-                Vector3 gunPos = transform.position + transform.up;
+                Vector3 gunPos = transform.position + 2 * transform.up;
                 Vector3 dir = (currentTarget.transform.position - gunPos).normalized;
 
                 gun.PullTrigger(projectile, gunPos + dir, Quaternion.LookRotation(dir));

@@ -11,9 +11,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject projectile = null;
 
+    [SerializeField] private GameObject[] buildPrefabs = null;
+
     private ProjectileEmitter gun = null;
     private Rigidbody rb = null;
     private Camera cam = null;
+    private int currentBuildPrefab = 0;
+
+    private GuiController guiController = null;
 
     private bool canMove = true;
     private bool canJump = true;
@@ -24,6 +29,10 @@ public class PlayerController : MonoBehaviour
         gun = GetComponent<ProjectileEmitter>();
         rb = GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
+
+        guiController = FindObjectOfType<GuiController>();
+
+        SelectBuildPrefab(true);
     }
 
     // Update is called once per frame
@@ -43,6 +52,8 @@ public class PlayerController : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y");
         bool jump = Input.GetButtonDown("Jump");
         bool fire = Input.GetButtonDown("Fire1");
+        bool build = Input.GetButtonDown("Fire2");
+        float mouseWheel = Input.GetAxis("Mouse ScrollWheel");
 
         // horizontal movement
         Vector2 hInput = (new Vector2(transform.forward.x, transform.forward.z) * zInput +
@@ -72,6 +83,17 @@ public class PlayerController : MonoBehaviour
         {
             gun.PullTrigger(projectile, cam.transform.position + cam.transform.forward, cam.transform.rotation);
         }
+
+        // select build prefab
+        if (mouseWheel != 0)
+        {
+            SelectBuildPrefab(mouseWheel > 0);
+        }
+
+        if (build)
+        {
+            Build();
+        }
     }
 
     void OnCollisionEnter(Collision other)
@@ -79,6 +101,52 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             canJump = true;
+        }
+    }
+
+    private void SelectBuildPrefab(bool up)
+    {
+        if (buildPrefabs.Length <= 0) return;
+
+        if (up)
+        {
+            currentBuildPrefab++;
+        }
+        else
+        {
+            currentBuildPrefab--;
+        }
+
+        if (currentBuildPrefab >= buildPrefabs.Length)
+        {
+            currentBuildPrefab = -1;
+        }
+        else if (currentBuildPrefab < -1)
+        {
+            currentBuildPrefab = buildPrefabs.Length - 1;
+        }
+
+        if (guiController)
+        {
+            guiController.UpdateSelectedBuildText(currentBuildPrefab >= 0 ? buildPrefabs[currentBuildPrefab].name : "[None]");
+        }
+
+        Debug.Log("currentBuildPrefab: " + currentBuildPrefab);
+    }
+
+    private void Build()
+    {
+        if (currentBuildPrefab == -1) return;
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 15))
+        {
+            if (hit.collider.gameObject.CompareTag("Ground"))
+            {
+                GameObject toBuild = buildPrefabs[currentBuildPrefab];
+                Instantiate(toBuild, hit.point, toBuild.transform.rotation);
+            }
         }
     }
 }
