@@ -6,12 +6,15 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private int daySeconds = 0;
 
+    GuiController guiController = null;
+
     private int currentSecond = 0;
     private int wave = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        guiController = GameObject.FindObjectOfType<GuiController>();
         InvokeRepeating("TickSecond", 0, 1);
     }
 
@@ -28,6 +31,11 @@ public class SpawnManager : MonoBehaviour
         }
 
         currentSecond++;
+
+        if (guiController)
+        {
+            guiController.UpdateTimer((float) currentSecond / daySeconds);
+        }
     }
 
     private void SpawnWave() 

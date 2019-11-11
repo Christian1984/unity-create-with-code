@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GuiController : MonoBehaviour
 {
     private Text selectedBuildText = null;
+    private RectTransform timerRect = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,13 @@ public class GuiController : MonoBehaviour
         if (selectedBuild)
         {
             selectedBuildText = selectedBuild.GetComponent<Text>();
+        }
+
+        GameObject timer = GameObject.Find("Timer");
+
+        if (timer)
+        {
+            timerRect = timer.GetComponent<RectTransform>();
         }
     }
 
@@ -28,6 +36,15 @@ public class GuiController : MonoBehaviour
         if (selectedBuildText)
         {
             selectedBuildText.text = "Selected Build: " + name;
+        }
+    }
+
+    public void UpdateTimer(float timerProgress)
+    {
+        if (timerRect)
+        {
+            float val = Mathf.Clamp(timerProgress, 0, 1);
+            timerRect.localScale = new Vector3(val, timerRect.localScale.y, timerRect.localScale.z);
         }
     }
 }
