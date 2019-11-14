@@ -194,6 +194,8 @@ GameObject:
   - component: {fileID: 428959159}
   - component: {fileID: 428959158}
   - component: {fileID: 428959162}
+  - component: {fileID: 428959163}
+  - component: {fileID: 428959164}
   m_Layer: 0
   m_Name: CompanionCube
   m_TagString: Untagged
@@ -267,8 +269,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428959157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -289,6 +291,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &428959163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428959157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fa404b048e1024f9f729df13d5a94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  spawnOnDeathPrefab: {fileID: 0}
+  spawnOnDeathPrefabCount: 0
+--- !u!114 &428959164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428959157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1427ae0564504c9f96c51eb1bec0fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &534117885
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7faa200bd359f2d4fa454a3866e1e917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  daySeconds: 10
+  daySeconds: 30
   numZombiesPerWaveIncrement: 2
   numZombiesRandomRange: 2
 --- !u!4 &781820799
@@ -1242,6 +1271,7 @@ GameObject:
   - component: {fileID: 1976444926}
   - component: {fileID: 1976444927}
   - component: {fileID: 1976444928}
+  - component: {fileID: 1976444929}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1389,6 +1419,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.2
+--- !u!114 &1976444929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976444920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1427ae0564504c9f96c51eb1bec0fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1976798049
 PrefabInstance:
   m_ObjectHideFlags: 0

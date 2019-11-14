@@ -35,11 +35,19 @@ public class DamageController : MonoBehaviour
 
     private void Die()
     {
-        if (!spawnOnDeathPrefab) return;
-
-        for (int i = 0; i < spawnOnDeathPrefabCount; i++)
+        if (spawnOnDeathPrefab)
         {
-            Instantiate(spawnOnDeathPrefab, transform.position, spawnOnDeathPrefab.transform.rotation);
+            for (int i = 0; i < spawnOnDeathPrefabCount; i++)
+            {
+                Instantiate(spawnOnDeathPrefab, transform.position, spawnOnDeathPrefab.transform.rotation);
+            }
+        }
+
+        GameOverOnDeath go = GetComponent<GameOverOnDeath>();
+
+        if (go)
+        {
+            go.TriggerGameOver();
         }
 
         Destroy(gameObject);
