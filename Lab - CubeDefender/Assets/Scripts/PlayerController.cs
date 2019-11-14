@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         bool jump = Input.GetButtonDown("Jump");
-        bool fire = Input.GetButtonDown("Fire1");
+        bool fire = Input.GetButton("Fire1");
         bool build = Input.GetButtonDown("Fire2");
         float mouseWheel = Input.GetAxis("Mouse ScrollWheel");
 
