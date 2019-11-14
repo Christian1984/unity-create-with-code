@@ -6,6 +6,9 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private int daySeconds = 0;
 
+    [SerializeField] private int numZombiesPerWaveIncrement = 0;
+    [SerializeField] private int numZombiesRandomRange = 0;
+
     GuiController guiController = null;
 
     private int currentSecond = 0;
@@ -15,11 +18,14 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         guiController = GameObject.FindObjectOfType<GuiController>();
+        SpawnWave();
         InvokeRepeating("TickSecond", 0, 1);
     }
 
     private void TickSecond()
     {
+        currentSecond++;
+
         if (currentSecond > daySeconds)
         {
             currentSecond = 0;
@@ -29,8 +35,6 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnWave();
         }
-
-        currentSecond++;
 
         if (guiController)
         {
@@ -46,7 +50,11 @@ public class SpawnManager : MonoBehaviour
 
         if (zombieSpawners.Length <= 0) return;
 
-        for (int i = 0; i < wave; i++)
+        int numZombiesStatic = wave * numZombiesPerWaveIncrement;
+        int numZombiesRandomized = Random.Range(numZombiesStatic - numZombiesRandomRange, numZombiesStatic + numZombiesRandomRange);
+        int numZombiesToSpawn = numZombiesRandomized >= 1 ? numZombiesRandomized : 1;
+
+        for (int i = 0; i < numZombiesToSpawn; i++)
         {
             int idx = Random.Range(0, zombieSpawners.Length);
             zombieSpawners[idx].Spawn();
