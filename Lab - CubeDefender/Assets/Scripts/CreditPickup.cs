@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CreditPickup : MonoBehaviour
 {
+    [SerializeField] private float spawnImpulse = 0;
     [SerializeField] private int value = 0;
     [SerializeField] private int livespanSeconds = 0;
 
@@ -15,7 +16,11 @@ public class CreditPickup : MonoBehaviour
         if (rb)
         {
             float angle = Random.Range(0, 360);
-            rb.AddForce(Vector3.up + Quaternion.Euler(0, angle, 0) * Vector3.right * 10, ForceMode.Impulse);
+            Vector3 hDir = Quaternion.Euler(0, angle, 0) * Vector3.forward;
+
+            transform.Translate(hDir);
+            float randSpawnImpulse = Random.Range(0.5f * spawnImpulse, 1.5f * spawnImpulse);
+            rb.AddForce((Vector3.up + hDir) * randSpawnImpulse, ForceMode.Impulse);
         }
 
         Invoke("Die", livespanSeconds);
