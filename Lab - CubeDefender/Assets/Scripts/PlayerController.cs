@@ -165,7 +165,12 @@ public class PlayerController : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Ground"))
             {
                 GameObject toBuild = buildPrefabs[currentBuildPrefab];
-                Instantiate(toBuild, hit.point, toBuild.transform.rotation);
+                Vector3 gridPoint = new Vector3(
+                    Mathf.Round(hit.point.x),
+                    Mathf.Round(hit.point.y),
+                    Mathf.Round(hit.point.z)
+                );
+                Instantiate(toBuild, gridPoint, toBuild.transform.rotation);
 
                 AddCredits(-buildable.getPrice());
             }
