@@ -6,6 +6,9 @@ public class DamageController : MonoBehaviour
 {
     [SerializeField] private float health = 0;
 
+    [SerializeField] private GameObject spawnOnDeathPrefab = null;
+    [SerializeField] private int spawnOnDeathPrefabCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +29,19 @@ public class DamageController : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        if (!spawnOnDeathPrefab) return;
+
+        for (int i = 0; i < spawnOnDeathPrefabCount; i++)
+        {
+            Instantiate(spawnOnDeathPrefab, transform.position, spawnOnDeathPrefab.transform.rotation);
+        }
+
+        Destroy(gameObject);
     }
 }

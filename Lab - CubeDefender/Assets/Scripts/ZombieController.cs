@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZombieController : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 0;
 
     private Rigidbody rb;
     private GameObject target;

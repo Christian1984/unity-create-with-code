@@ -1360,7 +1360,7 @@ MonoBehaviour:
   buildPrefabs:
   - {fileID: 6628987857849548540, guid: cde03cf874a97d1449d7a4994472d37b, type: 3}
   - {fileID: 7371050245073186788, guid: b01c9106ec2a6ce459684601b915cf5d, type: 3}
-  money: 0
+  credits: 15
 --- !u!114 &1976444927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1374,6 +1374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  spawnOnDeathPrefab: {fileID: 0}
+  spawnOnDeathPrefabCount: 0
 --- !u!114 &1976444928
 MonoBehaviour:
   m_ObjectHideFlags: 0
