@@ -21,8 +21,16 @@ public class ProjectileEmitter : MonoBehaviour
     private void EmitProjectile(GameObject projectile, Vector3 pos, Quaternion rot)
     {
         // instantiate object and rotate by prefabs initial rotation
-        Instantiate(projectile, pos, rot)
-            .transform.Rotate(projectile.transform.rotation.eulerAngles);
+        GameObject spawnedProjectile = Instantiate(projectile, pos, rot);
+        spawnedProjectile.transform.Rotate(projectile.transform.rotation.eulerAngles);
+
+        ProjectileDamageController projectileDamageController 
+            = spawnedProjectile.GetComponent<ProjectileDamageController>();
+
+        if (projectileDamageController)
+        {
+            projectileDamageController.SetSpawningGameObjectId(gameObject.GetInstanceID());
+        }
     }
 
     private IEnumerator weaponCooldown()

@@ -6,30 +6,34 @@ public class ProjectileDamageController : MonoBehaviour
 {
     [SerializeField] float damage = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int spawningGameObjectId = -1;
 
-    // Update is called once per frame
-    void Update()
+    public void SetSpawningGameObjectId(int id)
     {
-        
+        spawningGameObjectId = id;
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("Projectile collided!");
-
-        GameObject other = collider.gameObject;
-        DamageController damageController = other.GetComponent<DamageController>();
-
-        if (damageController)
+        // do not collide with own spawner
+        if (collider.gameObject.GetInstanceID() == spawningGameObjectId)
         {
-            damageController.DealDamage(damage);
+            Debug.Log("Projectile collided with own spawner...");
+            return;
         }
 
+        // prevent friendly fire, i.e. only damage enemies
+        if (collider.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Projectile collided with enemy!");
+            DamageController damageController = collider.gameObject.GetComponent<DamageController>();
+
+            if (damageController)
+            {
+                damageController.DealDamage(damage);
+            }
+        }
+        
         Destroy(gameObject);
     }
 }
