@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GuiController : MonoBehaviour
 {
     private Text selectedBuildText = null;
+    private Text creditsText = null;
     private RectTransform timerRect = null;
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,13 @@ public class GuiController : MonoBehaviour
         if (selectedBuild)
         {
             selectedBuildText = selectedBuild.GetComponent<Text>();
+        }
+
+        GameObject credits = GameObject.Find("Credits");
+
+        if (credits)
+        {
+            creditsText = credits.GetComponent<Text>();
         }
 
         GameObject timer = GameObject.Find("Timer");
@@ -31,6 +39,14 @@ public class GuiController : MonoBehaviour
         {
             string pricetag = price > 0 ? " [$" + price + "]" : "";
             selectedBuildText.text = "Selected Build: " + name + pricetag;
+        }
+    }
+
+    public void UpdateCreditsText(int credits)
+    {
+        if (creditsText)
+        {
+            creditsText.text = "Credits: [$" + credits + "]";
         }
     }
 

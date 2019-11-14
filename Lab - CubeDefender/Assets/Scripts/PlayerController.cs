@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject projectile = null;
 
     [SerializeField] private GameObject[] buildPrefabs = null;
-    [SerializeField] private int money = 0;
+    [SerializeField] private int credits = 0;
 
     private ProjectileEmitter gun = null;
     private Rigidbody rb = null;
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         guiController = FindObjectOfType<GuiController>();
 
         SelectBuildPrefab(true);
+        AddCredits(0);
     }
 
     // Update is called once per frame
@@ -147,7 +148,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
 
         Buildable buildable = buildPrefabs[currentBuildPrefab].GetComponent<Buildable>();
-        if (buildable.getPrice() >= money) return;
+        if (buildable.getPrice() >= credits) return;
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 15))
         {
@@ -156,8 +157,18 @@ public class PlayerController : MonoBehaviour
                 GameObject toBuild = buildPrefabs[currentBuildPrefab];
                 Instantiate(toBuild, hit.point, toBuild.transform.rotation);
 
-                money -= buildable.getPrice();
+                AddCredits(-buildable.getPrice());
             }
+        }
+    }
+
+    private void AddCredits(int amount)
+    {
+        credits += amount;
+
+        if (guiController)
+        {
+            guiController.UpdateCreditsText(credits);
         }
     }
 }
