@@ -5,6 +5,7 @@ using UnityEngine;
 public class CreditPickup : MonoBehaviour
 {
     [SerializeField] private int value = 0;
+    [SerializeField] private int livespanSeconds = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +17,17 @@ public class CreditPickup : MonoBehaviour
             float angle = Random.Range(0, 360);
             rb.AddForce(Vector3.up + Quaternion.Euler(0, angle, 0) * Vector3.right * 10, ForceMode.Impulse);
         }
+
+        Invoke("Die", livespanSeconds);
+    }
+
+    public int getValue()
+    {
+        return value;
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }

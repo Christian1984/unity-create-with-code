@@ -104,6 +104,16 @@ public class PlayerController : MonoBehaviour
         {
             canJump = true;
         }
+        else if (other.gameObject.CompareTag("Pickup"))
+        {
+            CreditPickup cp = other.gameObject.GetComponent<CreditPickup>();
+
+            if (cp)
+            {
+                AddCredits(cp.getValue());
+                Destroy(cp.gameObject);
+            }
+        }
     }
 
     private void SelectBuildPrefab(bool up)
@@ -148,7 +158,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
 
         Buildable buildable = buildPrefabs[currentBuildPrefab].GetComponent<Buildable>();
-        if (buildable.getPrice() >= credits) return;
+        if (buildable.getPrice() > credits) return;
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 15))
         {
