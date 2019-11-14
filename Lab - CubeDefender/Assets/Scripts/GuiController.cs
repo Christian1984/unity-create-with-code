@@ -25,17 +25,12 @@ public class GuiController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    /*void Update()
-    {
-        
-    }*/
-
-    public void UpdateSelectedBuildText(string name)
+    public void UpdateSelectedBuildText(string name, int price)
     {
         if (selectedBuildText)
         {
-            selectedBuildText.text = "Selected Build: " + name;
+            string pricetag = price > 0 ? " [$" + price + "]" : "";
+            selectedBuildText.text = "Selected Build: " + name + pricetag;
         }
     }
 

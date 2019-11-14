@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject projectile = null;
 
     [SerializeField] private GameObject[] buildPrefabs = null;
+    [SerializeField] private int money = 0;
 
     private ProjectileEmitter gun = null;
     private Rigidbody rb = null;
@@ -128,7 +129,12 @@ public class PlayerController : MonoBehaviour
 
         if (guiController)
         {
-            guiController.UpdateSelectedBuildText(currentBuildPrefab >= 0 ? buildPrefabs[currentBuildPrefab].name : "[None]");
+            string buildPrefabName = currentBuildPrefab >= 0 ? buildPrefabs[currentBuildPrefab].name : "[None]";
+
+            Buildable buildable = currentBuildPrefab >= 0 ? buildPrefabs[currentBuildPrefab].GetComponent<Buildable>() : null;
+            int buildPrefabPrice = buildable ? buildable.getPrice() : 0;
+
+            guiController.UpdateSelectedBuildText(buildPrefabName, buildPrefabPrice);
         }
 
         Debug.Log("currentBuildPrefab: " + currentBuildPrefab);
@@ -140,12 +146,17 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
 
+        Buildable buildable = buildPrefabs[currentBuildPrefab].GetComponent<Buildable>();
+        if (buildable.getPrice() >= money) return;
+
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 15))
         {
             if (hit.collider.gameObject.CompareTag("Ground"))
             {
                 GameObject toBuild = buildPrefabs[currentBuildPrefab];
                 Instantiate(toBuild, hit.point, toBuild.transform.rotation);
+
+                money -= buildable.getPrice();
             }
         }
     }

@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 7371050245073186791}
   - component: {fileID: 7371050245073186790}
   - component: {fileID: 7371050245073186789}
+  - component: {fileID: 114384410868294642}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -170,3 +171,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.5
+--- !u!114 &114384410868294642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7371050245073186788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b770d7594149d8f419d3f4c35a92f08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 10
