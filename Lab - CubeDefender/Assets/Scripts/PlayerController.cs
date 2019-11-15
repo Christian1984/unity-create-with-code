@@ -57,6 +57,10 @@ public class PlayerController : MonoBehaviour
         bool build = Input.GetButtonDown("Fire2");
         float mouseWheel = Input.GetAxis("Mouse ScrollWheel");
 
+        bool selectBuild0 = Input.GetKeyDown(KeyCode.Alpha1);
+        bool selectBuild1 = Input.GetKeyDown(KeyCode.Alpha2);
+        bool selectBuildNone = Input.GetKeyDown(KeyCode.Alpha0);
+
         // horizontal movement
         Vector2 hInput = (new Vector2(transform.forward.x, transform.forward.z) * zInput +
             new Vector2(transform.right.x, transform.right.z) * xInput);
@@ -91,6 +95,18 @@ public class PlayerController : MonoBehaviour
         {
             SelectBuildPrefab(mouseWheel > 0);
         }
+        else if (selectBuildNone)
+        {
+            SelectBuildPrefab(-1);
+        }
+        else if (selectBuild0)
+        {
+            SelectBuildPrefab(0);
+        }
+        else if (selectBuild1)
+        {
+            SelectBuildPrefab(1);
+        }
 
         if (build)
         {
@@ -116,27 +132,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SelectBuildPrefab(bool up)
+    private void SelectBuildPrefab(int id)
     {
-        if (buildPrefabs.Length <= 0) return;
+        if (id < -1 || id >= buildPrefabs.Length) return;
 
-        if (up)
-        {
-            currentBuildPrefab++;
-        }
-        else
-        {
-            currentBuildPrefab--;
-        }
-
-        if (currentBuildPrefab >= buildPrefabs.Length)
-        {
-            currentBuildPrefab = -1;
-        }
-        else if (currentBuildPrefab < -1)
-        {
-            currentBuildPrefab = buildPrefabs.Length - 1;
-        }
+        currentBuildPrefab = id;
 
         if (guiController)
         {
@@ -149,6 +149,33 @@ public class PlayerController : MonoBehaviour
         }
 
         Debug.Log("currentBuildPrefab: " + currentBuildPrefab);
+    }
+
+    private void SelectBuildPrefab(bool up)
+    {
+        if (buildPrefabs.Length <= 0) return;
+
+        int newBuildPrefab = currentBuildPrefab;
+
+        if (up)
+        {
+            newBuildPrefab++;
+        }
+        else
+        {
+            newBuildPrefab--;
+        }
+
+        if (newBuildPrefab >= buildPrefabs.Length)
+        {
+            newBuildPrefab = -1;
+        }
+        else if (newBuildPrefab < -1)
+        {
+            newBuildPrefab = buildPrefabs.Length - 1;
+        }
+
+        SelectBuildPrefab(newBuildPrefab);
     }
 
     private void Build()
