@@ -8,6 +8,7 @@ public class GuiController : MonoBehaviour
     private Text selectedBuildText = null;
     private Text creditsText = null;
     private RectTransform timerRect = null;
+
     // Start is called before the first frame update
     void Start()
     {

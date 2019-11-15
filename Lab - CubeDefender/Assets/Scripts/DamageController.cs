@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class DamageController : MonoBehaviour
 {
-    [SerializeField] private float health = 0;
+    [SerializeField] private float initialHealth = 0;
 
     [SerializeField] private GameObject spawnOnDeathPrefab = null;
     [SerializeField] private int spawnOnDeathPrefabCount = 0;
 
+    [SerializeField] private HealthBarController healthBarController = null;
+    private float health = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        health = initialHealth;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (healthBarController)
+        {
+            healthBarController.UpdateHealthBar(health, initialHealth, name);
+        }
     }
 
     public void DealDamage(float damage)
@@ -26,6 +28,11 @@ public class DamageController : MonoBehaviour
         Debug.Log(damage + " Damage dealt to " + gameObject.name);
 
         health -= damage;
+
+        if (healthBarController)
+        {
+            healthBarController.UpdateHealthBar(health, initialHealth, name);
+        }
 
         if (health <= 0)
         {
