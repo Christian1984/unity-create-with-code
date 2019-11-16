@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        
+
         gun = GetComponent<ProjectileEmitter>();
         rb = GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
@@ -116,13 +116,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            canJump = true;
-        }
-        else if (other.gameObject.CompareTag("Pickup"))
+        canJump = true;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pickup"))
         {
             CreditPickup cp = other.gameObject.GetComponent<CreditPickup>();
 
@@ -150,7 +151,7 @@ public class PlayerController : MonoBehaviour
             guiController.UpdateSelectedBuildText(buildPrefabName, buildPrefabPrice);
         }
 
-        Debug.Log("currentBuildPrefab: " + currentBuildPrefab);
+        //Debug.Log("currentBuildPrefab: " + currentBuildPrefab);
     }
 
     private void SelectBuildPrefab(bool up)
