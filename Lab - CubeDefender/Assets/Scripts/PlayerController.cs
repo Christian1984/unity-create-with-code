@@ -12,11 +12,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject projectile = null;
 
     [SerializeField] private GameObject[] buildPrefabs = null;
+    [SerializeField] private float maxBuildDistance = 0;
     [SerializeField] private int credits = 0;
 
     private ProjectileEmitter gun = null;
     private Rigidbody rb = null;
     private Camera cam = null;
+
+    private GameObject buildPosIndicator;
     private int currentBuildPrefab = 0;
 
     private GuiController guiController = null;
@@ -32,6 +35,12 @@ public class PlayerController : MonoBehaviour
         gun = GetComponent<ProjectileEmitter>();
         rb = GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
+        buildPosIndicator = GameObject.Find("BuildPosIndicator");
+
+        if (buildPosIndicator)
+        {
+            buildPosIndicator.SetActive(false);
+        }
 
         guiController = FindObjectOfType<GuiController>();
 
@@ -110,9 +119,35 @@ public class PlayerController : MonoBehaviour
             SelectBuildPrefab(1);
         }
 
-        if (build)
+        buildPosIndicator.SetActive(false);
+        if (currentBuildPrefab != -1)
         {
-            Build();
+            RaycastHit hit;
+
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, maxBuildDistance))
+            {
+                if (hit.collider.gameObject.CompareTag("Ground"))
+                {
+                    Vector3 gridPoint = new Vector3(
+                        Mathf.Round(hit.point.x),
+                        Mathf.Round(hit.point.y),
+                        Mathf.Round(hit.point.z)
+                    );
+
+                    buildPosIndicator.transform.position = gridPoint;
+                    buildPosIndicator.transform.rotation = Quaternion.identity;
+
+                    buildPosIndicator.SetActive(true);
+
+                    if (build)
+                    {
+                        if (Build(gridPoint))
+                        {
+                            buildPosIndicator.SetActive(false);
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -181,30 +216,19 @@ public class PlayerController : MonoBehaviour
         SelectBuildPrefab(newBuildPrefab);
     }
 
-    private void Build()
+    private bool Build(Vector3 pos)
     {
-        if (currentBuildPrefab == -1) return;
-
-        RaycastHit hit;
+        if (currentBuildPrefab == -1) return false;
 
         Buildable buildable = buildPrefabs[currentBuildPrefab].GetComponent<Buildable>();
-        if (buildable.getPrice() > credits) return;
+        if (buildable.getPrice() > credits) return false;
 
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 15))
-        {
-            if (hit.collider.gameObject.CompareTag("Ground"))
-            {
-                GameObject toBuild = buildPrefabs[currentBuildPrefab];
-                Vector3 gridPoint = new Vector3(
-                    Mathf.Round(hit.point.x),
-                    Mathf.Round(hit.point.y),
-                    Mathf.Round(hit.point.z)
-                );
-                Instantiate(toBuild, gridPoint, toBuild.transform.rotation);
+        GameObject toBuild = buildPrefabs[currentBuildPrefab];
+        Instantiate(toBuild, pos, toBuild.transform.rotation);
 
-                AddCredits(-buildable.getPrice());
-            }
-        }
+        AddCredits(-buildable.getPrice());
+
+        return true;
     }
 
     private void AddCredits(int amount)

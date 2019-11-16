@@ -1895,6 +1895,7 @@ MonoBehaviour:
   buildPrefabs:
   - {fileID: 6628987857849548540, guid: cde03cf874a97d1449d7a4994472d37b, type: 3}
   - {fileID: 7371050245073186788, guid: b01c9106ec2a6ce459684601b915cf5d, type: 3}
+  maxBuildDistance: 10
   credits: 15
 --- !u!114 &1976444927
 MonoBehaviour:
