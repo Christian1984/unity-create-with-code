@@ -25,7 +25,7 @@ public class DamageController : MonoBehaviour
 
     public void DealDamage(float damage)
     {
-        //Debug.Log(damage + " Damage dealt to " + gameObject.name);
+        Debug.Log(damage + " Damage dealt to " + gameObject.name);
 
         health -= damage;
 
