@@ -296,5 +296,24 @@ Added a mouse controller! :-) Works like a charm!
 - FindObjectsOfType
 
 
-# Unit 4 - Clicky Mouse
+# Unit 5 - User Interface
+
+## Lesson 5.1 - Clicky Mouse
+
+While the teacher uses Coroutines, I decided to go with InvokeRepeating. A discussion about the approaches can be found here: https://forum.unity.com/threads/invoke-vs-coroutine.40928/
+
+Despite my decision here, I totally agree with that: "I find that Invokes are error-prone (string calling) and limiting (no parameters)."
+
+### New Functionality:
+- Random objects are tossed into the air on intervals
+- Objects are given random speed, position, and torque
+- If you click on an object, it is destroyed
+
+### New Concepts and Skills: 
+- 2D View
+- AddTorque 
+- Game Manager
+- Lists
+- While Loops
+- Mouse Events
 
