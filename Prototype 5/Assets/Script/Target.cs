@@ -33,6 +33,8 @@ public class Target : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (gameManager?.IsGameOver() == true) return;
+
         Destroy(gameObject);
 
         if (explosionParticle)
@@ -40,14 +42,16 @@ public class Target : MonoBehaviour
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
         }
 
-        if (gameManager)
-        {
-            gameManager.AddScore(score);
-        }
+        gameManager?.AddScore(score);
     }
 
     void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
+
+        if (CompareTag("Good"))
+        {
+            gameManager?.GameOver();
+        }
     }
 }

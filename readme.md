@@ -334,3 +334,19 @@ Impressive how much bang the simple particle effect adds to the game! Cool stuff
 - Custom methods with parameters
 - Calling methods from other scripts
 
+## Lesson 5.3 - Game Over
+
+Note that UI-Buttons offer OnClick-Listeners right from the Editor that do not require any additional code. Just make sure that you drag in the actual GameObject into the Inspector, rather than using the circle and selecting the script-asset that you want to use!
+
+### New Functionality:
+- A functional Game Over screen with a Restart button
+- When the Restart button is clicked, the game resets
+
+### New Concepts and Skills: 
+- Game states 
+- Buttons
+- On Click events
+- Scene management Library
+- UI Library
+- Booleans to control game states
+
