@@ -126,3 +126,6 @@ MonoBehaviour:
   torqueMax: 10
   initialY: -2
   initialPosXRange: 4
+  score: 10
+  explosionParticle: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb,
+    type: 3}

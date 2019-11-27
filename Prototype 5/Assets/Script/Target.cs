@@ -12,9 +12,17 @@ public class Target : MonoBehaviour
     [SerializeField] private float initialY = -2;
     [SerializeField] private float initialPosXRange = 4;
 
+    [SerializeField] private int score = 10;
+
+    [SerializeField] private ParticleSystem explosionParticle;
+
+    private GameManager gameManager = null;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+
         transform.position = new Vector3(Random.Range(-initialPosXRange, initialPosXRange), initialY, 0);
 
         Rigidbody rb = GetComponent<Rigidbody>();
@@ -23,15 +31,19 @@ public class Target : MonoBehaviour
         rb.AddTorque(new Vector3(Random.Range(-torqueMax, torqueMax), Random.Range(-torqueMax, torqueMax), Random.Range(-torqueMax, torqueMax)), ForceMode.Impulse);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnMouseDown()
     {
         Destroy(gameObject);
+
+        if (explosionParticle)
+        {
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        }
+
+        if (gameManager)
+        {
+            gameManager.AddScore(score);
+        }
     }
 
     void OnTriggerEnter(Collider other)

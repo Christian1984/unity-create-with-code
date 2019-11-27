@@ -317,3 +317,20 @@ Despite my decision here, I totally agree with that: "I find that Invokes are er
 - While Loops
 - Mouse Events
 
+## Lesson 5.2 - Keeping Score
+
+Impressive how much bang the simple particle effect adds to the game! Cool stuff, and pretty simple to implement!
+
+### New Functionality:
+- There is a UI element for score on the screen
+- The player’s score is tracked and displayed by the score text when hit a target
+- There are particle explosions when the player gets an object
+
+### New Concepts and Skills:
+- TextMeshPro 
+- Canvas
+- Anchor Points
+- Import Libraries
+- Custom methods with parameters
+- Calling methods from other scripts
+
