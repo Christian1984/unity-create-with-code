@@ -8,15 +8,20 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText = null;
-    [SerializeField] TextMeshProUGUI gameOverText = null;
-    [SerializeField] Button restartButton = null;
+
+    [SerializeField] Canvas gameOverUI = null;
+    [SerializeField] Canvas mainMenuUI = null;
+    [SerializeField] Canvas gameplayUI = null;
+
+    private SpawnManager spawnManager = null;
 
     private int score = 0;
-    private bool gameOver = false;
+    private bool gameOver = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnManager = GameObject.FindObjectOfType<SpawnManager>();
         AddScore(0);
     }
 
@@ -37,17 +42,22 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        gameOverText?.gameObject.SetActive(true);
-        restartButton?.gameObject.SetActive(true);
-
+        gameOverUI?.gameObject.SetActive(true);
         gameOver = true;
-
-        SpawnManager spawnManager = GameObject.FindObjectOfType<SpawnManager>();
         spawnManager?.StopSpawning();
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartGame(int difficulty)
+    {
+        gameOver = false;
+        spawnManager?.StartSpawning(difficulty);
+
+        mainMenuUI?.gameObject.SetActive(false);
+        gameplayUI?.gameObject.SetActive(true);
     }
 }

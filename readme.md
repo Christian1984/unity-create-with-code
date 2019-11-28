@@ -350,3 +350,15 @@ Note that UI-Buttons offer OnClick-Listeners right from the Editor that do not r
 - UI Library
 - Booleans to control game states
 
+## Lesson 5.4 - What's the Difficulty
+
+### New Functionality
+- Title screen that lets the user start the game
+- Difficulty selection that affects spawn rate
+
+### New Concepts and Skills:
+- AddListener() 
+- Passing parameters between scripts
+- Divide/Assign (/=) operator
+- Grouping child objects
+

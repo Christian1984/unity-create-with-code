@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private float spawnInterval = 2;
+    [SerializeField] private float baseSpawnInterval = 2;
     [SerializeField] private GameObject[] TargetPrefabs = null;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        InvokeRepeating("SpawnTarget", 0, spawnInterval);
-    }
 
     void SpawnTarget()
     {
@@ -24,6 +18,12 @@ public class SpawnManager : MonoBehaviour
                 Instantiate(TargetPrefabs[idx]);
             }
         }
+    }
+
+    public void StartSpawning(int difficulty)
+    {
+        if (difficulty < 1) difficulty = 1;
+        InvokeRepeating("SpawnTarget", 0, baseSpawnInterval / difficulty);
     }
 
     public void StopSpawning()
