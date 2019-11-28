@@ -8,10 +8,14 @@ public class CreditPickup : MonoBehaviour
     [SerializeField] private int value = 0;
     [SerializeField] private int livespanSeconds = 0;
 
+    private Rigidbody rb = null;
+    private Collider coll = null;
+
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        coll = GetComponent<Collider>();
 
         if (rb)
         {
@@ -24,6 +28,19 @@ public class CreditPickup : MonoBehaviour
         }
 
         Invoke("Die", livespanSeconds);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(rb);
+
+            if (coll)
+            {
+                coll.isTrigger = true;
+            }
+        }
     }
 
     public int getValue()
