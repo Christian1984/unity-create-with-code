@@ -8,6 +8,12 @@ public class MeleeAttacker : MonoBehaviour
     [SerializeField] private float coolDown = 0;
 
     private bool canAttack = true;
+    private Animator animator;
+
+    void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     void OnCollisionStay(Collision collision)
     {
@@ -23,6 +29,8 @@ public class MeleeAttacker : MonoBehaviour
         if (canAttack)
         {
             damageController.DealDamage(strength);
+            animator?.SetBool("Attack", true);
+
             canAttack = false;
             Invoke("ResetCanAttack", coolDown);
         }

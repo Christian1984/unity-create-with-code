@@ -12,6 +12,9 @@ public class DamageController : MonoBehaviour
     [SerializeField] private HealthBarController healthBarController = null;
     private float health = 0;
 
+    private Animator animator;
+    private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,9 @@ public class DamageController : MonoBehaviour
         {
             healthBarController.UpdateHealthBar(health, initialHealth, name);
         }
+
+        animator = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
     public void DealDamage(float damage)
@@ -50,6 +56,10 @@ public class DamageController : MonoBehaviour
             }
         }
 
+        animator?.SetBool("Die", true);
+        animator?.SetBool("Walk", false);
+        Destroy(rb);
+
         GameOverOnDeath go = GetComponent<GameOverOnDeath>();
 
         if (go)
@@ -57,6 +67,6 @@ public class DamageController : MonoBehaviour
             go.TriggerGameOver();
         }
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }
