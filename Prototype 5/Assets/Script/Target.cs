@@ -35,12 +35,19 @@ public class Target : MonoBehaviour
     {
         if (gameManager?.IsGameOver() == true) return;
 
-        Destroy(gameObject);
-
         if (explosionParticle)
         {
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
         }
+
+        AudioClip clip = GetComponent<AudioSource>()?.clip;
+
+        if (clip)
+        {
+            AudioSource.PlayClipAtPoint(clip, Vector3.zero);
+        }
+
+        Destroy(gameObject);
 
         gameManager?.AddScore(score);
     }
